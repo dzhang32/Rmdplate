@@ -1,0 +1,31 @@
+---
+title: "Title"
+author: "David Zhang"
+output: 
+  html_document:
+    code_folding: hide
+    theme: spacelab
+    highlight: kate
+    df_print: paged
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Something useful hopefully!
+
+# Reproducibility
+
+```{r reproducibility, echo=FALSE}
+
+# Session info
+library("sessioninfo")
+
+options(width = 120)
+
+session_info()
+```
