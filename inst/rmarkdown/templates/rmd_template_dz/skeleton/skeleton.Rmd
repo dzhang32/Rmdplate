@@ -52,6 +52,8 @@ old_theme <- theme_set(ggpubr::theme_pubr())
 
 ```
 
+> Aim: What's the major aim of this .Rmd?
+
 # Something useful hopefully!
 
 ```{r "iris example"}
