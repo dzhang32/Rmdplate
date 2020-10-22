@@ -1,6 +1,7 @@
 ---
 title: "Title"
 author: "David Zhang"
+date: "`r format(Sys.time(), '%d %B %Y')`"
 output: 
   html_document:
     code_folding: hide
@@ -12,15 +13,64 @@ output:
     number_sections: true
 ---
 
-```{r setup, include=FALSE}
+```{r "setup", include = FALSE}
+
+library(knitr)
+library(magrittr)
+library(reactable)
+library(ggplot2)
+
 knitr::opts_chunk$set(echo = TRUE)
+
+##### Set default print options for data.frame #####
+
+knit_print.data.frame <- function(df, ...) {
+    df %>% 
+        reactable(
+            searchable = FALSE, 
+            filterable = FALSE, 
+            showSortable = TRUE, 
+            sortable = TRUE, 
+            highlight = TRUE, 
+            defaultPageSize = 5,
+            showPageSizeOptions = TRUE,
+            pageSizeOptions = c(5, 10),
+            paginationType = "simple",
+            defaultColDef = colDef(
+                align = "left",
+                format = colFormat(digits = 3))
+        ) %>% 
+        knit_print()
+}
+
+# register the method
+registerS3method("knit_print", "data.frame", knit_print.data.frame)
+
+##### Set defaults for ggplots #####
+
+old_theme <- theme_set(ggpubr::theme_pubr())
+
 ```
 
 # Something useful hopefully!
 
+```{r "iris example"}
+
+iris_10 <- data.frame(iris[1:10,]) 
+
+iris_10
+
+iris_10 %>% 
+    ggplot(aes(x = Sepal.Length,
+               y = Sepal.Width)
+    ) +
+    geom_point()
+
+```
+
 # Reproducibility
 
-```{r reproducibility, echo=FALSE}
+```{r "reproducibility", echo=FALSE}
 
 # Session info
 library("sessioninfo")

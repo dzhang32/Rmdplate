@@ -1,6 +1,6 @@
 Package: Rmdplate
-Title: .Rmd template made for convenience
-Version: 0.0.0.9000
+Title: .Rmd template
+Version: 0.99.0
 Authors@R: 
     person(given = "David",
            family = "Zhang",
@@ -15,3 +15,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 URL: https://github.com/dzhang32/Rmdplate
 BugReports: https://github.com/dzhang32/Rmdplate/issues
+Imports: 
+    magrittr,
+    reactable,
+    ggplot2,
+    ggpubr
