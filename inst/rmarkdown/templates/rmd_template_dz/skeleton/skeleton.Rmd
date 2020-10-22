@@ -72,7 +72,7 @@ iris_10 %>%
 
 # Reproducibility
 
-```{r "reproducibility", echo=FALSE}
+```{r "reproducibility", echo = FALSE}
 
 # Session info
 library("sessioninfo")
