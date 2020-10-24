@@ -1,6 +1,8 @@
 ---
 title: "Title"
-author: "David Zhang"
+author: 
+- name: "David Zhang"
+  affiliation: UCL
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: 
   html_document:
@@ -13,7 +15,7 @@ output:
     number_sections: true
 ---
 
-```{r "setup", include = FALSE}
+```{r setup, include = FALSE}
 
 library(knitr)
 library(magrittr)
@@ -54,25 +56,39 @@ old_theme <- theme_set(ggpubr::theme_pubr())
 
 > Aim: What's the major aim of this .Rmd?
 
-# Something useful hopefully!
+<br><br>
 
-```{r "iris example"}
+# Something useful hopefully! {.tabset}
 
+See figure: **Figure: Iris example - path/to/fig**
+
+## Tables 
+
+```{r iris_table}
 iris_10 <- data.frame(iris[1:10,]) 
 
 iris_10
+```
 
+<br><br>
+
+## Figures
+
+**Figure: Iris example - path_to_fig**
+
+```{r iris_figure}
 iris_10 %>% 
     ggplot(aes(x = Sepal.Length,
                y = Sepal.Width)
     ) +
     geom_point()
-
 ```
+
+<br><br>
 
 # Reproducibility
 
-```{r "reproducibility", echo = FALSE}
+```{r reproducibility, echo = FALSE}
 
 # Session info
 library("sessioninfo")
