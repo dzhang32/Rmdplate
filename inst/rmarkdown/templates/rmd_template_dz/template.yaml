@@ -1,4 +1,3 @@
 name: rmd_template_dz
-description: >
-   A description of the template
+description: A standard Rmd template for analysis
 create_dir: FALSE
