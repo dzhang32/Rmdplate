@@ -19,4 +19,8 @@ Imports:
     magrittr,
     reactable,
     ggplot2,
-    ggpubr
+    ggpubr,
+    bookdown,
+    htmltools, 
+    knitr, 
+    stringr
