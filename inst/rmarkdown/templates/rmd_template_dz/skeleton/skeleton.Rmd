@@ -5,7 +5,8 @@ author:
   affiliation: UCL
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: 
-  html_document:
+  bookdown::html_document2:
+    figure_caption: yes
     code_folding: hide
     theme: spacelab
     highlight: kate
@@ -24,29 +25,11 @@ library(ggplot2)
 
 knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 
-##### Set default print options for data.frame #####
+##### Set default print options for data.frame/reactable #####
 
-knit_print.data.frame <- function(df, ...) {
-    df %>% 
-        reactable(
-            searchable = FALSE, 
-            filterable = FALSE, 
-            showSortable = TRUE, 
-            sortable = TRUE, 
-            highlight = TRUE, 
-            defaultPageSize = 5,
-            showPageSizeOptions = TRUE,
-            pageSizeOptions = c(5, 10),
-            paginationType = "simple",
-            defaultColDef = colDef(
-                align = "left",
-                format = colFormat(digits = 3))
-        ) %>% 
-        knit_print()
-}
-
-# register the method
-registerS3method("knit_print", "data.frame", knit_print.data.frame)
+# register the default methods for print dfs/reactable
+registerS3method("knit_print", "data.frame", Rmdplate::knit_print_df)
+registerS3method("knit_print", "reactable", Rmdplate::knit_print_reactable)
 
 ##### Set defaults for ggplots #####
 
@@ -60,23 +43,32 @@ old_theme <- theme_set(ggpubr::theme_pubr())
 
 # Something useful hopefully! {.tabset}
 
-See figure: **Figure: Iris example - path/to/fig**
-
 ## Tables 
 
-```{r iris_table}
+Cross-referencing of tables is as yet not available for `reactable` (https://github.com/glin/reactable/issues/15). Therefore, I've attempted a workaround based off https://cran.r-project.org/web/packages/knitr/vignettes/knit_print.html. To use this, you need to add a `fig.cap` to the table in the format 'fig.cap = "key: table caption"', then refer the table with `\@ref(tab:key)` - for example \@ref(tab:iris-table).
+
+```{r iris-table, fig.cap = "iris-table: This is an example of how to cross-ref tables"}
 iris_10 <- data.frame(iris[1:10,]) 
 
 iris_10
 ```
 
+Making sure this also works for `reactable`s \@ref(tab:iris-reactable). 
+
+```{r iris-reactable, fig.cap = "iris-reactable: This is an example of how to cross-ref reactables"}
+
+iris_10
+
+```
+
+
 <br><br>
 
 ## Figures
 
-**Figure: Iris example - path_to_fig**
+For figures, need to make sure your keys don't have a "_" in them and have `fig.cap = "figure caption"` to refer to them in the text (\@ref(fig:iris-figure))
 
-```{r iris_figure}
+```{r iris-figure, fig.cap = "You need this to refer to figures"}
 iris_10 %>% 
     ggplot(aes(x = Sepal.Length,
                y = Sepal.Width)
