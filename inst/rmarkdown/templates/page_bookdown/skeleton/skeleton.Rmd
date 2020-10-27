@@ -1,0 +1,5 @@
+# Introduction {#intro}
+
+## New section
+
+Refer to sections as `[intro](#intro)`. Refer to packages as `[@R-package_name]`. And refer to papers as `[@key]`
