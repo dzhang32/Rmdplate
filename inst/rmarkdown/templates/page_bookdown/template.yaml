@@ -1,3 +1,2 @@
 name: page_bookdown
-description: Template for a typical page of a bookdown book
-create_dir: FALSE
+create_dir: false

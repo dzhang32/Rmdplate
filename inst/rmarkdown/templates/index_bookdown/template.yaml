@@ -1,3 +1,2 @@
 name: index_bookdown
-description: Template for the index.Rmd of a bookdown book
-create_dir: FALSE
+create_dir: false
