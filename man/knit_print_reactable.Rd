@@ -10,7 +10,8 @@ knit_print_reactable(df_react, options, ...)
 \item{df_react}{\code{reactable} data table.}
 
 \item{options}{this will be taken as a list of a parameters inputted into the
-chunk. Specifically, \code{fig.cap} is used to}
+chunk. Specifically, the \code{fig.cap} chunk parameter is used to input to
+label tables with a caption enabling referencing them in the text.}
 
 \item{...}{Included based off this tutorial
 https://cran.r-project.org/web/packages/knitr/vignettes/knit_print.html.

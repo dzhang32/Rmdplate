@@ -10,7 +10,8 @@
 #'
 #' @param df a `data.frame`
 #' @param options this will be taken as a list of a parameters inputted into the
-#'   chunk. Specifically, `fig.cap` is used to
+#'   chunk. Specifically, the `fig.cap` chunk parameter is used to input to
+#'   label tables with a caption enabling referencing them in the text.
 #' @param ... Included based off this tutorial
 #'   https://cran.r-project.org/web/packages/knitr/vignettes/knit_print.html.
 #'   Required for `knitr::knit_print`.
