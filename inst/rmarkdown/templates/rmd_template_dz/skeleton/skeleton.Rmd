@@ -78,14 +78,16 @@ iris_10 %>%
 
 <br><br>
 
-# Reproducibility
-
-```{r reproducibility, echo = FALSE}
-
 # Session info
+
+<details>
+  <summary>Show/hide</summary>
+```{r session-info, echo = FALSE}
+
 library("sessioninfo")
 
 options(width = 120)
 
 session_info()
 ```
+</details> 
