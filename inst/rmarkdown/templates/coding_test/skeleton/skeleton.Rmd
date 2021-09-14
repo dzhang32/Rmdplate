@@ -20,24 +20,27 @@ output:
 
 library(knitr)
 library(magrittr)
-library(reactable)
 library(ggplot2)
+library(reactable)
+library(Rmdplate)
 
 knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 
 ##### Set default print options for data.frame/reactable #####
 
 # register the default methods for print dfs/reactable
+# if you would like to knit this .Rmd, please install Rmdplate from GitHub via
+# devtools::install_github("dzhang32/Rmdplate")
 registerS3method("knit_print", "data.frame", Rmdplate::knit_print_df)
 registerS3method("knit_print", "reactable", Rmdplate::knit_print_reactable)
 
 ##### Set defaults for ggplots #####
 
-old_theme <- theme_set(ggpubr::theme_pubr())
+old_theme <- ggplot2::theme_set(ggpubr::theme_pubr())
 
 ```
 
-> Coding test for
+> Coding test
 
 <br><br>
 
