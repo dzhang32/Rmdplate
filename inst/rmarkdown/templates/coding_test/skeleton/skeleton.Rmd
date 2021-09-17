@@ -20,7 +20,7 @@ output:
 
 library(knitr)
 library(tidyverse)
-library(ggplot2)
+library(here)
 
 knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 
